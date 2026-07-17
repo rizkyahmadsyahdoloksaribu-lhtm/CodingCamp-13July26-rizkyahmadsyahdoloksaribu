@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── TOP BAR ── -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <span id="current-date"></span>
+    </div>
+    <div class="topbar__right">
+      <button id="theme-toggle" class="btn btn--icon" title="Toggle light/dark mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="dashboard">
+
+    <!-- ── GREETING ── -->
+    <section class="card greeting-card">
+      <div id="clock" class="clock"></div>
+      <h1 id="greeting-text" class="greeting-text"></h1>
+      <p class="greeting-name-row">
+        <span id="greeting-name"></span>
+        <button id="edit-name-btn" class="btn btn--ghost btn--sm" title="Change name">✏️</button>
+      </p>
+    </section>
+
+    <!-- ── FOCUS TIMER ── -->
+    <section class="card timer-card">
+      <h2 class="card__title">Focus Timer</h2>
+
+      <div class="timer-display">
+        <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+      </div>
+
+      <div class="timer-controls">
+        <button id="timer-start" class="btn btn--primary">▶ Start</button>
+        <button id="timer-stop"  class="btn btn--secondary">⏸ Pause</button>
+        <button id="timer-reset" class="btn btn--ghost">↺ Reset</button>
+      </div>
+
+      <!-- Challenge: change Pomodoro duration -->
+      <div class="timer-settings">
+        <label for="pomodoro-duration">Duration (min):</label>
+        <input id="pomodoro-duration" type="number" min="1" max="90" value="25" class="input input--sm" />
+        <button id="set-duration-btn" class="btn btn--sm btn--outline">Set</button>
+      </div>
+    </section>
+
+    <!-- ── TO-DO LIST ── -->
+    <section class="card todo-card">
+      <div class="card__header">
+        <h2 class="card__title">To-Do List</h2>
+        <div class="todo-sort">
+          <label for="sort-select">Sort:</label>
+          <!-- Challenge: sort tasks -->
+          <select id="sort-select" class="input input--sm">
+            <option value="default">Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="done">Done last</option>
+          </select>
+        </div>
+      </div>
+
+      <form id="todo-form" class="todo-form">
+        <input id="todo-input" type="text" placeholder="Add a new task…" class="input" autocomplete="off" />
+        <button type="submit" class="btn btn--primary">Add</button>
+      </form>
+
+      <ul id="todo-list" class="todo-list"></ul>
+    </section>
+
+    <!-- ── QUICK LINKS ── -->
+    <section class="card links-card">
+      <h2 class="card__title">Quick Links</h2>
+
+      <div id="links-grid" class="links-grid"></div>
+
+      <form id="link-form" class="link-form">
+        <input id="link-name"  type="text" placeholder="Label (e.g. GitHub)"  class="input" />
+        <input id="link-url"   type="url"  placeholder="URL (https://…)"      class="input" />
+        <button type="submit" class="btn btn--primary">Add Link</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ── NAME MODAL ── -->
+  <div id="name-modal" class="modal hidden">
+    <div class="modal__box">
+      <h3>What's your name?</h3>
+      <input id="name-input" type="text" placeholder="Enter your name" class="input" maxlength="40" />
+      <div class="modal__actions">
+        <button id="name-save-btn" class="btn btn--primary">Save</button>
+        <button id="name-cancel-btn" class="btn btn--ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
